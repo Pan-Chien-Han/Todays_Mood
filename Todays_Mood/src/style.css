@@ -1,0 +1,352 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', '微軟正黑體', 'Noto Sans TC', Arial, sans-serif;
+  color: #6d4c41;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e3f0ff 0%, #b3d8ff 100%);
+  background-image:
+    linear-gradient(135deg, #e3f0ff 0%, #b3d8ff 100%),
+    url('https://www.transparenttextures.com/patterns/food.png');
+  /* 增加趣味背景圖案 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.7s, background-color 0.7s;
+}
+
+.container {
+  max-width: 480px;
+  margin: 2.5rem auto;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 2.2rem 2rem 2rem 2rem;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px 0 rgba(255, 183, 94, 0.18), 0 1.5px 6px 0 rgba(0,0,0,0.05);
+  animation: floatCard 3s ease-in-out infinite alternate;
+  position: relative;
+}
+
+@keyframes floatCard {
+  0% { transform: translateY(0px) scale(1);}
+  100% { transform: translateY(-10px) scale(1.01);}
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: 'Segoe Script', 'Comic Sans MS', 'Noto Sans TC', cursive, sans-serif;
+  color: #d2691e;
+  letter-spacing: 2px;
+  font-size: 2.1rem;
+  position: relative;
+  padding-bottom: 0.7rem;
+}
+
+h1::after {
+  content: "🌈✨";
+  display: block;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 0.2rem;
+  letter-spacing: 0.5rem;
+  opacity: 0.85;
+}
+
+.question {
+  margin-bottom: 1.5rem;
+}
+
+.question label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 1.08rem;
+  color: #a67c52;
+  letter-spacing: 1px;
+  position: static;
+  padding-left: 0;
+}
+
+.question label::before {
+  content: none;
+}
+
+.value {
+  color: #ff9800;
+  margin-left: 0.5rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: #ff9800;
+  height: 10px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #ffe0b2 0%, #ffb74d 50%, #ff9800 100%);
+  outline: none;
+  margin-top: 0.3rem;
+  box-shadow: 0 2px 10px #ffecb3, 0 0 0 2px #ff9800;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+input[type="range"]:focus,
+input[type="range"]:active {
+  box-shadow: 0 2px 16px #ff9800, 0 0 0 3px #ff9800;
+  background: linear-gradient(90deg, #ffe0b2 0%, #ffb74d 60%, #ff9800 100%);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #ffe0b2 0%, #ffb74d 50%, #ff9800 100%);
+}
+
+input[type="range"]::-moz-range-track {
+  height: 10px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #ffe0b2 0%, #ffb74d 50%, #ff9800 100%);
+}
+
+input[type="range"]::-ms-fill-lower,
+input[type="range"]::-ms-fill-upper {
+  height: 10px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #ffe0b2 0%, #ffb74d 50%, #ff9800 100%);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff3e0;
+  border: 3px solid #ff9800;
+  box-shadow: 0 4px 12px #ffecb3, 0 0 0 4px #ffd180;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s, box-shadow 0.2s;
+}
+input[type="range"]:focus::-webkit-slider-thumb,
+input[type="range"]:active::-webkit-slider-thumb {
+  background: #ffd180;
+  border: 3px solid #ff9800;
+  box-shadow: 0 4px 18px #ff9800, 0 0 0 6px #ffe0b2;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff3e0;
+  border: 3px solid #ff9800;
+  box-shadow: 0 4px 12px #ffecb3, 0 0 0 4px #ffd180;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s, box-shadow 0.2s;
+}
+input[type="range"]:focus::-moz-range-thumb,
+input[type="range"]:active::-moz-range-thumb {
+  background: #ffd180;
+  border: 3px solid #ff9800;
+  box-shadow: 0 4px 18px #ff9800, 0 0 0 6px #ffe0b2;
+}
+
+input[type="range"]::-ms-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff3e0;
+  border: 3px solid #ff9800;
+  box-shadow: 0 4px 12px #ffecb3, 0 0 0 4px #ffd180;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s, box-shadow 0.2s;
+}
+input[type="range"]:focus::-ms-thumb,
+input[type="range"]:active::-ms-thumb {
+  background: #ffd180;
+  border: 3px solid #ff9800;
+  box-shadow: 0 4px 18px #ff9800, 0 0 0 6px #ffe0b2;
+}
+
+button {
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1.13rem;
+  background: linear-gradient(90deg, #ffd180 0%, #ffb74d 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #a67c52;
+  margin-top: 1.2rem;
+  box-shadow: 0 2px 8px #ffe0b2, 0 0 0 0 #ffb74d;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s, color 0.3s;
+  letter-spacing: 1px;
+}
+
+button::after {
+  content: "🎵";
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.3rem;
+  opacity: 0.7;
+  pointer-events: none;
+  transition: right 0.3s;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #ffb74d 0%, #ffd180 100%);
+  color: #d2691e;
+}
+
+button:hover::after {
+  right: 0.7rem;
+  opacity: 1;
+}
+
+#result {
+  margin-top: 2.2rem;
+  font-size: 1.15rem;
+  background: #fff8f1;
+  border-radius: 10px;
+  padding: 1.2rem 1rem 1.1rem 1rem;
+  box-shadow: 0 1px 8px #ffe0b2;
+  color: #8d5524;
+  animation: popResult 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+  border: 2px dashed #ffd180;
+  position: relative;
+}
+
+@keyframes popResult {
+  0% { transform: scale(0.7); opacity: 0; }
+  80% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+#songLink {
+  color: #ff9800;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 1.08rem;
+  display: inline-block;
+  margin-top: 0.7rem;
+  letter-spacing: 1px;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+#songLink::before {
+  content: "▶️";
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.datetime {
+  position: fixed;
+  top: 18px;
+  left: 24px;
+  background: rgba(255,255,255,0.85);
+  color: #a67c52;
+  font-size: 1.08rem;
+  font-family: 'Segoe UI', 'Noto Sans TC', Arial, sans-serif;
+  padding: 0.45rem 1.1rem 0.45rem 1.1rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px #ffe0b2;
+  z-index: 100;
+  letter-spacing: 1px;
+  font-weight: 500;
+  user-select: none;
+}
+
+#bg-bubbles {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.welcome-modal {
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(179, 216, 255, 0.65); /* 淡藍色半透明 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s;
+}
+
+#guide-modal {
+  /* 共用welcome-modal樣式 */
+}
+
+.welcome-card {
+  background: rgba(255,255,255,0.97);
+  border-radius: 22px;
+  box-shadow: 0 6px 32px 0 rgba(255, 183, 94, 0.22), 0 1.5px 6px 0 rgba(0,0,0,0.07);
+  padding: 2.2rem 2.5rem 2rem 2.5rem;
+  text-align: center;
+  max-width: 340px;
+  animation: popResult 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+.welcome-title {
+  font-size: 1.45rem;
+  color: #d2691e;
+  font-family: 'Segoe Script', 'Comic Sans MS', 'Noto Sans TC', cursive, sans-serif;
+  margin-bottom: 1.1rem;
+  letter-spacing: 1.5px;
+}
+
+.welcome-message {
+  color: #a67c52;
+  font-size: 1.08rem;
+  margin-bottom: 1.5rem;
+  min-height: 2.5em;
+  line-height: 1.7;
+}
+
+.welcome-btn {
+  background: linear-gradient(90deg, #ffd180 0%, #ffb74d 100%);
+  color: #a67c52;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.13rem;
+  font-weight: bold;
+  padding: 0.7rem 2.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #ffe0b2;
+  letter-spacing: 1px;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.welcome-btn:hover {
+  background: linear-gradient(90deg, #ffb74d 0%, #ffd180 100%);
+  color: #d2691e;
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+  }
+  h1 {
+    font-size: 1.3rem;
+  }
+  .datetime {
+    top: 8px;
+    left: 8px;
+    font-size: 0.98rem;
+    padding: 0.32rem 0.7rem;
+  }
+}

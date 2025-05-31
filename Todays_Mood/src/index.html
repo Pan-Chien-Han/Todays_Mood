@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>#TodaysMood</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Firebase App (core) SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <!-- Firebase Database SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+</head>
+<body>
+  <canvas id="bg-bubbles"></canvas>
+  <div id="welcome-modal" class="welcome-modal">
+    <div class="welcome-card">
+      <div class="welcome-title">歡迎來到 #TodaysMood</div>
+      <div class="welcome-message" id="welcome-message"></div>
+      <button class="welcome-btn" onclick="closeWelcome()">開始</button>
+    </div>
+  </div>
+  <div id="guide-modal" class="welcome-modal" style="display:none; opacity:0;">
+    <div class="welcome-card">
+      <div class="welcome-title">如何使用</div>
+      <div class="welcome-message" id="guide-message"></div>
+      <button class="welcome-btn" onclick="closeGuide()">我知道了</button>
+    </div>
+  </div>
+  <div id="datetime" class="datetime"></div>
+  <div class="container">
+    <h1>#TodaysMood</h1>
+
+    <div class="question">
+      <label>精力充沛程度：<span class="value">5</span></label>
+      <input type="range" min="1" max="10" value="5" oninput="updateValue(this)" />
+    </div>
+    <div class="question">
+      <label>快樂程度：<span class="value">5</span></label>
+      <input type="range" min="1" max="10" value="5" oninput="updateValue(this)" />
+    </div>
+    <div class="question">
+      <label>焦慮程度：<span class="value">5</span></label>
+      <input type="range" min="1" max="10" value="5" oninput="updateValue(this)" />
+    </div>
+    <div class="question">
+      <label>平靜程度：<span class="value">5</span></label>
+      <input type="range" min="1" max="10" value="5" oninput="updateValue(this)" />
+    </div>
+    <div class="question">
+      <label>壓力程度：<span class="value">5</span></label>
+      <input type="range" min="1" max="10" value="5" oninput="updateValue(this)" />
+    </div>
+    <div class="question">
+      <label>自信程度：<span class="value">5</span></label>
+      <input type="range" min="1" max="10" value="5" oninput="updateValue(this)" />
+    </div>
+    <div class="question">
+      <label>疲憊程度：<span class="value">5</span></label>
+      <input type="range" min="1" max="10" value="5" oninput="updateValue(this)" />
+    </div>
+    <div class="question">
+      <label>想社交的程度：<span class="value">5</span></label>
+      <input type="range" min="1" max="10" value="5" oninput="updateValue(this)" />
+    </div>
+
+    <button onclick="analyzeMood()">分析心情</button>
+
+    <div id="result" style="display:none;">
+      <p id="quote"></p>
+      <a id="songLink" href="#" target="_blank" rel="noopener noreferrer"></a>
+    </div>
+  </div>
+  <div id="user-count" style="position:fixed;top:18px;right:24px;background:rgba(255,255,255,0.85);color:#1976d2;font-size:1.08rem;padding:0.45rem 1.1rem;border-radius:16px;box-shadow:0 2px 8px #bbdefb;z-index:101;letter-spacing:1px;font-weight:500;user-select:none;">
+    目前在線人數：<span id="online-count">...</span><br>
+    累積訪客人數：<span id="total-visitor-count">...</span>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
