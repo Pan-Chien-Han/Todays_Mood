@@ -68,6 +68,11 @@
     <div id="result" style="display:none;">
       <p id="quote"></p>
       <a id="songLink" href="#" target="_blank" rel="noopener noreferrer"></a>
+      <div id="result-actions" style="margin-top:1.2rem;">
+        <button id="save-mood-btn" onclick="saveMoodRecord()">儲存今日心情</button>
+        <button id="retry-btn" onclick="resetToHome()" style="margin-left:0.7rem;">重新測驗</button>
+      </div>
+      <div id="save-tip" style="display:none;color:#1976d2;font-weight:bold;margin-top:0.8rem;"></div>
     </div>
   </div>
   <div id="user-count" style="position:fixed;top:18px;right:24px;background:rgba(255,255,255,0.85);color:#1976d2;font-size:1.08rem;padding:0.45rem 1.1rem;border-radius:16px;box-shadow:0 2px 8px #bbdefb;z-index:101;letter-spacing:1px;font-weight:500;user-select:none;">

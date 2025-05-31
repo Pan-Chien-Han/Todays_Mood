@@ -130,6 +130,8 @@ function setRandomBackground(moodCategory) {
   document.body.style.backgroundImage = `url('${randomImg}')`;
 }
 
+let lastMoodRecord = null; // 暫存本次分析結果
+
 function analyzeMood() {
   const inputs = Array.from(document.querySelectorAll("input[type=range]"));
   const values = inputs.map(i => parseInt(i.value));
@@ -185,25 +187,68 @@ function analyzeMood() {
   songLink.target = "_blank";
   songLink.rel = "noopener noreferrer";
 
-  // === 新增：儲存每日心情紀錄到 Firebase ===
+  // 暫存本次結果，待使用者點擊「儲存」時再寫入
+  lastMoodRecord = {
+    timestamp: new Date().toISOString(),
+    moodScore,
+    moodCategory,
+    moodDescription,
+    values: { energy, happy, anxious, calm, stress, confidence, tired, social },
+    quote,
+    song
+  };
+
+  // 顯示儲存/重新測驗按鈕，隱藏提示
+  document.getElementById("save-mood-btn").style.display = "";
+  document.getElementById("retry-btn").style.display = "";
+  document.getElementById("save-tip").style.display = "none";
+
+  pauseBgm();
+}
+
+// 儲存今日心情
+function saveMoodRecord() {
+  if (!lastMoodRecord) return;
   try {
     const uid = getUid();
-    const dt = new Date();
+    const dt = new Date(lastMoodRecord.timestamp);
     const dateKey = `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
-    const record = {
-      timestamp: dt.toISOString(),
-      moodScore,
-      moodCategory,
-      moodDescription,
-      values: { energy, happy, anxious, calm, stress, confidence, tired, social },
-      quote,
-      song
-    };
-    db.ref(`moodRecords/${uid}/${dateKey}`).set(record);
+    db.ref(`moodRecords/${uid}/${dateKey}`).set(lastMoodRecord, function(err){
+      if (!err) {
+        showSaveTip("已儲存！即將回到首頁...");
+        setTimeout(resetToHome, 1200);
+      } else {
+        showSaveTip("儲存失敗，請稍後再試");
+      }
+    });
+    // 儲存後隱藏按鈕
+    document.getElementById("save-mood-btn").style.display = "none";
+    document.getElementById("retry-btn").style.display = "none";
   } catch (e) {
-    // 若 firebase 尚未初始化或出錯則忽略
-    // console.error(e);
+    showSaveTip("儲存失敗，請稍後再試");
   }
+}
+
+// 顯示提示訊息
+function showSaveTip(msg) {
+  const tip = document.getElementById("save-tip");
+  tip.textContent = msg;
+  tip.style.display = "";
+}
+
+// 回到首頁（重設所有畫面）
+function resetToHome() {
+  // 隱藏結果區塊
+  document.getElementById("result").style.display = "none";
+  // 重設所有滑桿
+  document.querySelectorAll("input[type=range]").forEach(input => {
+    input.value = 5;
+    input.previousElementSibling.querySelector(".value").textContent = 5;
+  });
+  // 恢復背景
+  document.body.style.backgroundImage = "";
+  // 重新顯示歡迎視窗
+  showWelcome();
 }
 
 // 日期時間顯示（分成兩行顯示）
